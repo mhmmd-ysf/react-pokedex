@@ -9,6 +9,7 @@ function Home(props) {
   ]
   
   const [ filtered, setFiltered ] = useState([])
+  const [ triggered, setTriggered ] = useState(false)
   function seeDetail(id) {
     props.seeDetails(id)
   }
@@ -25,6 +26,10 @@ function Home(props) {
         return false
       }
     })
+    setTriggered(true)
+    if(!type) {
+      setTriggered(false)
+    }
     setFiltered(filterState)
   }
 
@@ -69,7 +74,7 @@ function Home(props) {
                 </a>
               )
             })
-          :
+          : !filtered.length && !triggered ?
           props.pokemon.map((item, idx) => {
             return (
               <a href="/" onClick={ e => {e.preventDefault(); seeDetail(item.id)}}>
@@ -77,6 +82,7 @@ function Home(props) {
               </a>
             )
           })
+          : null
         }</InfiniteScroll>
     }
   </div>)
