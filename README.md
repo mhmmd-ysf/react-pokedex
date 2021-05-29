@@ -2,6 +2,8 @@
 
 Simple pokedex web app built with react.
 
+## Live Web
+
 Deploy link [click here](https://react-pokedex-yusuf.web.app/).
 
 ## Dependencies
